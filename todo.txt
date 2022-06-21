@@ -1,0 +1,1 @@
+- ce qui separe les etoiles et le bouton de menu (Home Page) est un sizedBox. faut spaceBetween (Main axis)
