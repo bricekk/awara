@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class SpecialDealWidget extends StatelessWidget {
+
   const SpecialDealWidget({Key? key}) : super(key: key);
 
   @override
@@ -65,6 +69,9 @@ class OfferDescription extends StatefulWidget {
 }
 
 class _OfferDescriptionState extends State<OfferDescription> {
+
+  DatabaseReference testRef = FirebaseDatabase.instance.ref().child('test');
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,11 +111,16 @@ class _OfferDescriptionState extends State<OfferDescription> {
                         width: 80,
                         height: 35,
                         child: Center(
-                          child: Text(
-                            "Buy Now",
-                            style: GoogleFonts.roboto(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600),
+                          child: GestureDetector(
+                            onTap: (){
+                              testRef.set("special deal bought ${Random().nextInt(100)}");
+                            },
+                            child: Text(
+                              "Buy Now",
+                              style: GoogleFonts.roboto(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         )),
                   )
