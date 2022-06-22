@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "143089924581",
+    "project_id": "awara-a4150",
+    "storage_bucket": "awara-a4150.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143089924581:android:a3d4320dcc46ff7cb4170c",
+        "android_client_info": {
+          "package_name": "com.example.awara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143089924581-0f7di54rki9r9d5kkpqsq8nurf4ov7bl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRcbhgwF_BhBKLAMcmSzkHAF0qunvT96o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143089924581-0f7di54rki9r9d5kkpqsq8nurf4ov7bl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

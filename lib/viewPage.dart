@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:awara/ui/accountPage.dart';
-import 'package:awara/ui/cartPage.dart';
-import 'package:awara/ui/discussion.dart';
+import 'package:awara/ui/accountPage/accountPage.dart';
+import 'package:awara/ui/cartPage/cartPage.dart';
+import 'package:awara/ui/discussionPage/discussion.dart';
 import 'package:awara/ui/homePage/homePage.dart';
 import 'package:get/get.dart';
 

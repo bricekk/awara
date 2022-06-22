@@ -18,7 +18,7 @@ class ThemeClass {
 
   static ThemeData dark = ThemeData(
       scaffoldBackgroundColor: Colors.grey.shade900,
-      primaryColor: Colors.red.shade900,
+      primaryColor: Colors.red.shade700,
       secondaryHeaderColor: Colors.white,
       colorScheme: const ColorScheme.dark(),
       appBarTheme: AppBarTheme(

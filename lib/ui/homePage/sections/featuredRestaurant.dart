@@ -38,7 +38,7 @@ class _FeaturedResturantSectionState extends State<FeaturedResturantSection> {
                                 : Colors.black))),
                 child: Text(
                   "see all",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500,color: Theme.of(context).primaryColor),
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
                 ),
               ),
             ),

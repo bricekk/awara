@@ -15,19 +15,19 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           Text("Awara"),
         ],
       ),
-      actions: [
-        MaterialButton(
-          onPressed: () {
-            ThemeService().switchTheme();
-          },
-          child: Icon(
-            Theme.of(context).colorScheme == const ColorScheme.dark()
-                ? Icons.sunny
-                : Icons.dark_mode,
-            color: Colors.white,
-          ),
-        )
-      ],
+      // actions: [
+      //   MaterialButton(
+      //     onPressed: () {
+      //       ThemeService().switchTheme();
+      //     },
+      //     child: Icon(
+      //       Theme.of(context).colorScheme == const ColorScheme.dark()
+      //           ? Icons.sunny
+      //           : Icons.dark_mode,
+      //       color: Colors.white,
+      //     ),
+      //   )
+      // ],
     );
   }
 
