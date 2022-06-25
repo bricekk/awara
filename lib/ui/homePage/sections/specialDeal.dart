@@ -7,6 +7,6 @@ class SpecialDealSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SpecialDealWidget();
+    return SpecialDealWidget();
   }
 }

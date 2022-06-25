@@ -63,7 +63,7 @@ class _ImageBoxState extends State<ImageBox> {
       margin: const EdgeInsets.only(left: 5, right: 5),
       height: 100,
       width: 100,
-      child: Image.asset(widget.imageUrl),
+      child: Image.network(widget.imageUrl),
     );
   }
 }

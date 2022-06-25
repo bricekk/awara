@@ -17,7 +17,7 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.0),
-        color: Colors.grey,
+        color: Colors.grey.shade200,
       ),
       child: TextFormField(
         cursorColor: Colors.grey.shade700,
@@ -30,7 +30,7 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
           cut: true,
         ),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 10,top: 5),
+          contentPadding: const EdgeInsets.only(left: 10,top: 5),
           hintText: 'Search',
           hintStyle: TextStyle(
             color: Colors.grey.shade600

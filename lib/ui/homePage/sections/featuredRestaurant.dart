@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:awara/widgets/featuredRestaurant.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/rendering.dart';
 
 class FeaturedResturantSection extends StatefulWidget {
   const FeaturedResturantSection({Key? key}) : super(key: key);
@@ -10,8 +12,14 @@ class FeaturedResturantSection extends StatefulWidget {
 }
 
 class _FeaturedResturantSectionState extends State<FeaturedResturantSection> {
+
+  final DatabaseReference _featuredRestaurantRef = FirebaseDatabase.instance.ref('restaurants');
+
   @override
   Widget build(BuildContext context) {
+
+    _featuredRestaurantRef.keepSynced(true);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,7 +44,7 @@ class _FeaturedResturantSectionState extends State<FeaturedResturantSection> {
                                     ColorScheme.dark()
                                 ? Colors.white
                                 : Colors.black))),
-                child: Text(
+                child: const Text(
                   "see all",
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
                 ),
@@ -44,26 +52,35 @@ class _FeaturedResturantSectionState extends State<FeaturedResturantSection> {
             ),
           ],
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              FeaturedRestaurantWidget(
-                name: "Mc Donaldsss",
-                location: "Dla, Bonapriso",
-                distance: '2km',
-                note: 2,
-                imageUrl: 'assets/images/img2.png',
-              ),
-              FeaturedRestaurantWidget(
-                name: "Ritz",
-                location: "Dla, Bonamoussadi",
-                distance: '3km',
-                note: 4,
-                imageUrl: 'assets/images/img2.png',
-              ),
-            ],
-          ),
+        StreamBuilder(
+            stream: _featuredRestaurantRef.onValue,
+            builder: (context, AsyncSnapshot snap) {
+              if(snap.hasData && !snap.hasError && snap.data.snapshot.value != null){
+                Map data = snap.data.snapshot.value;
+                List list = [];
+                data.forEach((index, data)=> list.add({"key": index, ...data}));
+                return SizedBox(
+                  height: 110,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                      itemCount: (list.length),
+                      itemBuilder: (context, index){
+                        return FeaturedRestaurantWidget(
+                            name: list[index]['restoName'],
+                            location: list[index]['restoSis'],
+                            note: list[index]['restoNote'],
+                            distance: "2km",
+                            imageUrl: list[index]['restoImg'],
+                        );
+                      },
+                  ),
+                );
+              }else{
+                return const Center(
+                  child: Text("no data"),
+                );
+              }
+            }
         )
       ],
     );

@@ -1,33 +1,51 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class SpecialDealWidget extends StatelessWidget {
 
-  const SpecialDealWidget({Key? key}) : super(key: key);
+  final DatabaseReference _specialDealRef = FirebaseDatabase.instance.ref('dealHistory');
 
   @override
   Widget build(BuildContext context) {
+
+    _specialDealRef.keepSynced(true);
+
     return Container(
       margin: const EdgeInsets.only(top: 10, bottom: 10),
-      height: 90,
-      child: Row(
-        children: const [
-          ImageBox(
-            imageUrl: "assets/images/img1.png",
-          ),
-          Expanded(
-            child: OfferDescription(
-              title: "Special Deal For You This Month",
-              subTitle: "Burger Juice and Frie",
-              price: 1500,
-            ),
-          )
-        ],
-      ),
+      height: 100,
+      child: StreamBuilder(
+          stream: _specialDealRef.limitToLast(1).onValue,
+          builder: (context, AsyncSnapshot snap){
+            if(snap.hasData && !snap.hasError && snap.data.snapshot.value != null){
+              Map data = snap.data.snapshot.value;
+              List list = [];
+              data.forEach((index, data)=> list.add({"key": index, ...data}));
+              return ListView.builder(
+                  itemCount: list.length,
+                  itemBuilder: (context, index){
+                    return Row(
+                      children: [
+                        ImageBox(
+                          imageUrl: list[index]['dealImg'],
+                        ),
+                        Expanded(
+                          child: OfferDescription(
+                            title: list[index]['dealHock'],
+                            subTitle: list[index]['menuName']!,
+                            price: list[index]['dealPrice'],
+                          ),
+                        )
+                      ],
+                    );
+                  });
+            }else{
+              return const Center(
+                child: Text("no data"),
+              );
+            }
+          })
     );
   }
 }
@@ -50,18 +68,18 @@ class _ImageBoxState extends State<ImageBox> {
       width: 90,
       decoration: BoxDecoration(
       ),
-      child: Image.asset(widget.imageUrl),
+      child: Image.network(widget.imageUrl),
     );
   }
 }
 
 class OfferDescription extends StatefulWidget {
   final String title;
-  final String? subTitle;
+  final String subTitle;
   final int price;
 
   const OfferDescription(
-      {Key? key, required this.title, this.subTitle, required this.price})
+      {Key? key, required this.title, required this.subTitle, required this.price})
       : super(key: key);
 
   @override
@@ -70,12 +88,15 @@ class OfferDescription extends StatefulWidget {
 
 class _OfferDescriptionState extends State<OfferDescription> {
 
-  DatabaseReference testRef = FirebaseDatabase.instance.ref().child('test');
+  final DatabaseReference _specialDealeRef = FirebaseDatabase.instance.ref();
+
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       margin: const EdgeInsets.only(left: 10, top: 10),
+      height: 90,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -90,7 +111,7 @@ class _OfferDescriptionState extends State<OfferDescription> {
           ),
           Expanded(
               child: Text(
-            widget.subTitle!,
+            widget.subTitle,
             style: GoogleFonts.roboto(fontWeight: FontWeight.w600),
           )),
           Expanded(
@@ -112,9 +133,7 @@ class _OfferDescriptionState extends State<OfferDescription> {
                         height: 35,
                         child: Center(
                           child: GestureDetector(
-                            onTap: (){
-                              testRef.set("special deal bought ${Random().nextInt(100)}");
-                            },
+                            onTap: (){},
                             child: Text(
                               "Buy Now",
                               style: GoogleFonts.roboto(
