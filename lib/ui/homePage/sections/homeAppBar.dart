@@ -8,6 +8,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Row(
         children: const [
           Icon(Icons.restaurant_menu),

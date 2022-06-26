@@ -37,7 +37,7 @@ class _ViewPageState extends State<ViewPage> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         showUnselectedLabels: false,
         showSelectedLabels: false,
-        selectedIconTheme: IconThemeData(
+        selectedIconTheme: const IconThemeData(
           color: Colors.white,
           size: 27
         ),

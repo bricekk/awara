@@ -90,7 +90,7 @@ class _MenuItemDescriptionState extends State<MenuItemDescription> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(5),
-      width: 250,
+      width: 230,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

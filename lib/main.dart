@@ -1,6 +1,8 @@
 import 'package:awara/services/themeService.dart';
+import 'package:awara/ui/others/welcomeProcess/aboutPage.dart';
 import 'package:awara/utils/themeDef.dart';
 import 'package:awara/viewPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,8 +21,6 @@ class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _firebaseApp =  Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
   );
-
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -38,7 +38,17 @@ class MyApp extends StatelessWidget {
           }
           else if(snapshot.hasData){
             FirebaseDatabase.instance.setPersistenceEnabled(true);
-            return const ViewPage();
+            return  StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+                builder: (context, snapshot){
+                  if(snapshot.hasData){
+                    return const ViewPage();
+                  }
+                  else{
+                    return const AboutPage();
+                  }
+                }
+                );
           }
           else{
             return const Center(

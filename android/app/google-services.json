@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "143089924581",
+    "firebase_url": "https://awara-a4150-default-rtdb.firebaseio.com",
     "project_id": "awara-a4150",
     "storage_bucket": "awara-a4150.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "143089924581-0f7di54rki9r9d5kkpqsq8nurf4ov7bl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "143089924581-9ept2ruek2v0qnn9sa5r2oif1ms7rss8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.awara"
+              }
             }
           ]
         }

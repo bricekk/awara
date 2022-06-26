@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -66,7 +67,7 @@ class _ImageBoxState extends State<ImageBox> {
     return Container(
       height: 80,
       width: 90,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
       ),
       child: Image.network(widget.imageUrl),
     );
@@ -88,8 +89,6 @@ class OfferDescription extends StatefulWidget {
 
 class _OfferDescriptionState extends State<OfferDescription> {
 
-  final DatabaseReference _specialDealeRef = FirebaseDatabase.instance.ref();
-
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +103,7 @@ class _OfferDescriptionState extends State<OfferDescription> {
             child: Text(
               widget.title,
               style: GoogleFonts.asul(
-                fontSize: 17.5,
+                fontSize: 15.5,
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -133,7 +132,9 @@ class _OfferDescriptionState extends State<OfferDescription> {
                         height: 35,
                         child: Center(
                           child: GestureDetector(
-                            onTap: (){},
+                            onTap: (){
+                              FirebaseAuth.instance.signOut();
+                            },
                             child: Text(
                               "Buy Now",
                               style: GoogleFonts.roboto(
