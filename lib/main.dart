@@ -10,7 +10,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   runApp(MyApp());
@@ -18,9 +18,10 @@ Future<void> main() async{
 
 class MyApp extends StatelessWidget {
 
-  final Future<FirebaseApp> _firebaseApp =  Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -31,26 +32,17 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeClass.dark,
       home: FutureBuilder(
         future: _firebaseApp,
-        builder: (context, snapshot){
-          if(snapshot.hasError){
-            print("Future builder error MyApp()! : ${snapshot.error.toString()}");
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print(
+                "Future builder error MyApp()! : ${snapshot.error.toString()}");
             return const Text("something went wrong");
-          }
-          else if(snapshot.hasData){
+          } else if (snapshot.hasData) {
             FirebaseDatabase.instance.setPersistenceEnabled(true);
-            return  StreamBuilder(
-              stream: FirebaseAuth.instance.authStateChanges(),
-                builder: (context, snapshot){
-                  if(snapshot.hasData){
-                    return const ViewPage();
-                  }
-                  else{
-                    return const AboutPage();
-                  }
-                }
-                );
-          }
-          else{
+            return (FirebaseAuth.instance.currentUser != null)
+                ? const ViewPage()
+                : const AboutPage();
+          } else {
             return const Center(
               child: CircularProgressIndicator(),
             );

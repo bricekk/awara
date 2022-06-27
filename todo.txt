@@ -1,1 +1,5 @@
 - ce qui separe les etoiles et le bouton de menu (Home Page) est un sizedBox. faut spaceBetween (Main axis)
+- comprendre la conexion avec firebase
+- faire fonctionner la connexion sans le captcha
+- faire fonctionner la deconnexion
+- enregistrement d'un nouvel user

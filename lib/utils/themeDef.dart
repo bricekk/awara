@@ -8,6 +8,13 @@ class ThemeClass {
       colorScheme: const ColorScheme.light(),
       primaryColor: Colors.red.shade900,
       secondaryHeaderColor: Colors.black,
+      textTheme: const TextTheme(
+        headline6: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
+        )
+      ),
       primaryTextTheme: const TextTheme(
           labelSmall: TextStyle(
             color: Colors.black,
@@ -20,6 +27,13 @@ class ThemeClass {
       scaffoldBackgroundColor: Colors.grey.shade900,
       primaryColor: Colors.red.shade700,
       secondaryHeaderColor: Colors.white,
+      textTheme: const TextTheme(
+          headline6: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          )
+      ),
       colorScheme: const ColorScheme.dark(),
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.red.shade900,

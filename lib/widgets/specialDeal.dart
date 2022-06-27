@@ -1,3 +1,4 @@
+import 'package:awara/ui/others/welcomeProcess/LogInPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -132,8 +133,12 @@ class _OfferDescriptionState extends State<OfferDescription> {
                         height: 35,
                         child: Center(
                           child: GestureDetector(
-                            onTap: (){
-                              FirebaseAuth.instance.signOut();
+                            onTap: () async {
+                              await FirebaseAuth.instance.signOut();
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context)=>LogInPage()));
                             },
                             child: Text(
                               "Buy Now",
