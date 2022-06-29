@@ -47,127 +47,21 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
             resizeToAvoidBottomInset: true,
             body: Form(
               key: _formKey,
-              child: SingleChildScrollView(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 50, left: 20, right: 20,bottom: 0),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Text(
-                          "Code de verification",
-                          style: GoogleFonts.roboto(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Center(
-                        child: Text(
-                          "Nous avons envoyé un code au ${hideNumber}",
-                          style: GoogleFonts.roboto(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          DigitField(
-                            digitController: _digit1,
-                          ),
-                          DigitField(digitController: _digit2),
-                          DigitField(digitController: _digit3),
-                          DigitField(digitController: _digit4),
-                          DigitField(digitController: _digit5),
-                          DigitField(digitController: _digit6),
-
-                        ],
-                      ),
-                      const SizedBox(height: 50,),
-                      Center(
-                        child: Text(
-                          "Demander un nouveau code dans 1:00",
-                          style: GoogleFonts.roboto(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 170,),
-                      SizedBox(
-                        height: 60,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap: (){},
-                                  child: Container(
-                                    height: 40,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.white
-                                      )
-                                    ),
-                                    child: const Center(
-                                      child:
-                                      Text(
-                                          "Réenvoyer le code",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white,
-                                      ),)
-                                    ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: verifyOTP,
-                                  child: Container(
-                                    height: 40,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 2,
-                                            color: Colors.red.shade900
-                                        ),
-                                      color: Colors.white,
-                                    ),
-                                    child: Center(
-                                        child:
-                                        Text(
-                                          "Confirmer",
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.red.shade900,
-                                          ),)
-                                    ),
-                                  ),
-                                )
-
-                              ],
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+              child: Column(
+                children: [
+                  Column(
+                    children: [],
                   ),
-                ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                      TextButton(onPressed: (){}, child: Text("Brice",style: TextStyle(fontSize: 30,),))
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           )
